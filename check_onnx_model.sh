@@ -23,7 +23,7 @@ hashmap["5.1"]="nvcr.io/nvidia/tensorrt:19.03-py3"
 #hashmap["6.0"]="${DOCKER_IMAGE_OLDER}6.0"
 hashmap["6.0"]="nvcr.io/nvidia/tensorrt:19.09-py3"
 #hashmap["7.0"]="${DOCKER_IMAGE_OLDER}7.0"
-hashmap["6.0"]="nvcr.io/nvidia/tensorrt:20.02-py3"
+hashmap["7.0"]="nvcr.io/nvidia/tensorrt:20.02-py3"
 hashmap["7.1"]="nvcr.io/nvidia/tensorrt:20.07-py3"
 
 TRT_COMMAND=""
@@ -66,10 +66,10 @@ for version in "${trt_versions[@]}"; do
     cat "${in_log_file}" >> "${raw_log_file}"
 
     echo -en "TensorRT ${version}"
-    if grep -q "${fail_str}" "${in_log_file}"; then
-        printf "\033[31m FAILED \033[39m\n"
-    else
+    if grep -q "${ok_str}" "${in_log_file}"; then
         printf "\033[32m PASSED \033[39m\n"
+    else
+        printf "\033[31m FAILED \033[39m\n"
     fi
 
     rm "${in_log_file}"
