@@ -9,7 +9,7 @@ The test script is still quite basic, and requires the model to be put in the cu
 Example :
 
 ```sh
-./check_onnx_model.sh model.onnx --verbose --fp16 --workspace=2000
+./check_onnx_model.sh model.onnx --fp16
 Testing TensorRT...
  5.1
  6.0
@@ -20,15 +20,16 @@ Testing TensorRT...
 TensorRT 5.1 FAILED 
 TensorRT 6.0 PASSED 
 TensorRT 7.0 PASSED 
+TensorRT 7.1 PASSED 
 
 For more information :
   cat log_model.onnx.txt
 
 ```
 
-By default the script will check against TRT 5.1 -> 7.0 ( = JetPack 4.2.1 and above).
+By default the script will check against TRT 5.1 -> 7.1 ( = JetPack 4.2.1 and above).
 
-The logs are displayed in real time and stored into log files (like "log_trt5.1_model.onnx.txt"). Since this is the stock version of trtexec, the logging isn't consistent between version and quite verbose unfortunelty. It's currently not possible to have a output like "TRT 6.0 : Compatible, took N ms (median, end to end)".
+The logs are displayed in real time and stored into log files (like "log_trt5.1_model.onnx.txt"). Since this is the stock version of trtexec, the logging isn't consistent between version and quite verbose unfortunetly. It's currently not possible to have a output like "TRT 6.0 : Compatible, took N ms (median, end to end)".
 
 ## Support
 
