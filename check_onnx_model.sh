@@ -25,6 +25,7 @@ hashmap["6.0"]="nvcr.io/nvidia/tensorrt:19.09-py3"
 #hashmap["7.0"]="${DOCKER_IMAGE_OLDER}7.0"
 hashmap["7.0"]="nvcr.io/nvidia/tensorrt:20.02-py3"
 hashmap["7.1"]="nvcr.io/nvidia/tensorrt:20.07-py3"
+hashmap["7.2"]="nvcr.io/nvidia/tensorrt:20.11-py3"
 
 TRT_COMMAND=""
 
@@ -35,7 +36,7 @@ TRT_COMMAND=""
 # JP 4.3 : TRT 6.0
 
 #trt_versions=( "4.0" "5.0" "5.1" "6.0" "7.0" )
-trt_versions=( "5.1" "6.0" "7.0" "7.1" )
+trt_versions=( "5.1" "6.0" "7.0" "7.1" "7.2")
  echo -e "Testing TensorRT..."
 
 for version in "${trt_versions[@]}"; do
