@@ -9,7 +9,8 @@ The test script is still quite basic, and requires the model to be put in the cu
 Example :
 
 ```sh
-./check_onnx_model.sh model.onnx --fp16
+wget https://raw.githubusercontent.com/adujardin/tensorrt-compatibility/master/check_onnx_model.sh
+bash check_onnx_model.sh model.onnx --fp16
 Testing TensorRT...
  5.1
  6.0
