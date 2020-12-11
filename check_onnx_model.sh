@@ -29,11 +29,21 @@ hashmap["7.2"]="nvcr.io/nvidia/tensorrt:20.11-py3"
 
 TRT_COMMAND=""
 
+declare -A hashmap_jp
+hashmap_jp["4.0"]="3.3"
+hashmap_jp["5.0"]="4.1.1, 4.2.0"
+hashmap_jp["5.1"]="4.2.1"
+hashmap_jp["6.0"]="4.3"
+hashmap_jp["7.0"]=""
+hashmap_jp["7.1"]="4.4.0, 4.4.1"
+hashmap_jp["7.2"]=""
+
 # JP 3.3 : TRT 4.0
 # JP 4.1.1 : TRT 5.0
 # JP 4.2.0 : TRT 5.0
 # JP 4.2.1 : TRT 5.1
 # JP 4.3 : TRT 6.0
+# JP 4.4 : TRT 7.1
 
 #trt_versions=( "4.0" "5.0" "5.1" "6.0" "7.0" )
 trt_versions=( "5.1" "6.0" "7.0" "7.1" "7.2")
@@ -66,12 +76,20 @@ for version in "${trt_versions[@]}"; do
     tail -n 20 "${in_log_file}" >> "${log_file}"
     cat "${in_log_file}" >> "${raw_log_file}"
 
-    echo -en "TensorRT ${version}"
     if grep -q "${ok_str}" "${in_log_file}"; then
-        printf "\033[32m PASSED \033[39m\n"
+        printf "\033[32m PASSED \033[39m"
     else
-        printf "\033[31m FAILED \033[39m\n"
+        printf "\033[31m FAILED \033[39m"
     fi
+
+    jp_ver_str="${hashmap_jp[${version}]}"
+    display_str="TensorRT ${version}"
+    if [ -z "${jp_ver_str}" ]; then
+        echo -en "${display_str}\n"
+    else
+        echo -en "${display_str} (JetPack ${jp_ver_str})\n"
+    fi
+
 
     rm "${in_log_file}"
 done
