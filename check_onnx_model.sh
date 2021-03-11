@@ -35,7 +35,7 @@ hashmap_jp["5.0"]="4.1.1, 4.2.0"
 hashmap_jp["5.1"]="4.2.1"
 hashmap_jp["6.0"]="4.3"
 hashmap_jp["7.0"]=""
-hashmap_jp["7.1"]="4.4.0, 4.4.1"
+hashmap_jp["7.1"]="4.4.X, 4.5.X"
 hashmap_jp["7.2"]=""
 
 # JP 3.3 : TRT 4.0
