@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -x
 if [ $# -eq 0 ];  then
     echo "Usage : check_onnx_model.sh model_file.onnx [trtexec options like --fp16 or --workspace=2000...]"
     exit 1
@@ -28,6 +28,10 @@ hashmap["7.1"]="nvcr.io/nvidia/tensorrt:20.07-py3"
 hashmap["7.2"]="nvcr.io/nvidia/tensorrt:20.11-py3"
 hashmap["8.0"]="nvcr.io/nvidia/tensorrt:21.07-py3"
 hashmap["8.2"]="nvcr.io/nvidia/tensorrt:21.12-py3"
+hashmap["8.4"]="nvcr.io/nvidia/tensorrt:22.07-py3"
+hashmap["8.5"]="nvcr.io/nvidia/tensorrt:22.12-py3"
+hashmap["8.6"]="nvcr.io/nvidia/tensorrt:23.04-py3"
+
 
 TRT_COMMAND=""
 
@@ -39,7 +43,11 @@ hashmap_jp["6.0"]="4.3"
 hashmap_jp["7.0"]=""
 hashmap_jp["7.1"]="4.4.X, 4.5.X"
 hashmap_jp["7.2"]=""
-hashmap_jp["8.0"]="4.6.X"
+hashmap_jp["8.0"]="4.6.0"
+hashmap_jp["8.2"]="4.6.1"
+hashmap_jp["8.4"]="5.0.2"
+hashmap_jp["8.5"]="5.1"
+
 
 # JP 3.3 : TRT 4.0
 # JP 4.1.1 : TRT 5.0
@@ -49,7 +57,7 @@ hashmap_jp["8.0"]="4.6.X"
 # JP 4.4 : TRT 7.1
 
 #trt_versions=( "4.0" "5.0" "5.1" "6.0" "7.0" )
-trt_versions=( "7.0" "7.1" "7.2" "8.0" "8.2")
+trt_versions=( "8.0" "8.2" "8.4" "8.5" "8.6")
  echo -e "Testing TensorRT..."
 
 for version in "${trt_versions[@]}"; do
